@@ -1,7 +1,8 @@
-const fs = require("fs").promises;
+const fs = require("fs");
 const inquirer = require("inquirer");
+const util = require("util");
 const formatREADME = require("./Develop/utils/generateMarkdown");
-const writeFile
+const writeFileAsync = util.promisify(fs.writeFile);
 
 // array of questions for user
 const questions = [
@@ -28,7 +29,8 @@ const questions = [
     {
         type: "input",
         name: "license",
-        message: "What type of licensing does the project require?"
+        message: "What type of licensing does the project require?",
+        choices: ["MIT", "GNU GPL v3", "ISC"]
     },
     {
         type: "input",
@@ -52,14 +54,83 @@ const questions = [
     }
 ];
 
-// function to write README file
-function writeToFile("README.md", data) {
-}
-
+function getResponses() {
+    return inquirer.prompt(questions)
+};
+   
 // function to initialize program
-function init() {
-
-}
+async function init() {
+    console.log("Welcome to the README Generator application.  Please provide responses to the subsequent questions and your answers will be included & formatted in your finalized README.md file.")
+    try {
+        const responses = await getResponses();
+        const makeREADME = formatREADME(responses);
+        await writeFileAsync("README.md", makeREADME);
+        console.log("You have successfully generated your project README.")
+    } catch (error) {
+        console.log(error);
+    };
+};
 
 // function call to initialize program
 init();
+
+/*
+Project name
+License
+Table of Contents:
+-description
+-installations
+-usage
+-contributing
+-tests
+-questions/comments
+
+Link to repo
+Link to deployed app
+
+// function to generate markdown for README
+function generateMarkdown(data) {
+  return `# ${data.name}
+![License](https://img.shields.io/badge/License-${data.license}-blue.svg "License Badge")
+## Table of Content: 
+#### (Link to Github Repo) [https://github.com/${data.github}/${data.name}]
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#Contributing)
+- [Tests](#tests)
+- [License](#license)
+- [Questions](#questions)
+- [Credits](#credits)
+## Link to Github Repo
+https://github.com/${data.github}/${data.name}
+## Link to the Deployed Application
+ ${data.deployed}
+## Description
+ ${data.description}
+ 
+## Installation 
+ ${data.instalation}
+## Usage
+ ${data.usage}
+## Contributing
+ ${data.contributing}
+## Tests
+ ${data.tests}
+## License
+       ${data.license}
+  
+## Questions
+For any questions you can find me on Github or through my E-mail:
+      
+> GitHub: https://github.com/${data.github}
+> E-mail: ${data.email}
+      
+### Credits
+© ${data.year} ${data.yName}.      
+      `;
+}
+
+module.exports = generateMarkdown;
+*/
+
