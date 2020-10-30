@@ -30,9 +30,8 @@ ${responses.userInfo}
 ## Link to Github Repo
 https://github.com/${responses.accountGH}/${responses.projectName}
 ## Feedback
-If you have any questions, comments, or contributions regarding the deployed application, please contact me @:
-      
-> E-mail: ${responses.email}  
+If you have any questions, comments, or contributions regarding the deployed application, please contact my email @: ${responses.email}  
+or via my GitHub account @: https://github.com/${responses.accountGH}
       `;
 }
 
