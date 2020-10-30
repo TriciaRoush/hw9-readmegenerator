@@ -4,14 +4,14 @@ function generateMarkdown(responses) {
 
 ![License](https://img.shields.io/badge/License-${responses.license}-blue.svg "License Badge")
 
-## Table of Content: 
-#### (Link to Github Repo) [https://github.com/${responses.accountGH}/${responses.projectName}]
+## Table of Contents: 
+
 - [Description](#description)
 - [License](#license)
 - [Installation](#installation)
-- [Tests](#tests)
+- [Test](#test)
 - [Contributors](#contributors)
-- [User Information](#userInfo)
+- [UserInformation](#userinformation)
 - [Link to GitHub Repo](#link)
 - [Feedback](#feedback)
 
@@ -21,7 +21,7 @@ ${responses.description}
 ${responses.license}
 ## Installation 
 ${responses.dependancies}
-## Tests
+## Test
 ${responses.test}
 ## Contributors
 ${responses.contributors}
@@ -31,9 +31,8 @@ ${responses.userInfo}
 https://github.com/${responses.accountGH}/${responses.projectName}
 ## Feedback
 If you have any questions, comments, or contributions regarding the deployed application, please contact me @:
-For any questions you can find me on Github or through my E-mail:
       
-> E-mail: ${responses.email}     
+> E-mail: ${responses.email}  
       `;
 }
 
