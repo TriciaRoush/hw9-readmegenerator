@@ -8,7 +8,7 @@ const writeFileAsync = util.promisify(fs.writeFile);
 const questions = [
     {
         type: "input",
-        name: "account",
+        name: "accountGH",
         message: "What is your GitHub account user name?"
     },
     {
@@ -18,39 +18,39 @@ const questions = [
     },
     {
         type: "input",
-        name: "name",
+        name: "projectName",
         message: "What is the name of your application?"
     },
     {
         type: "input",
         name: "description",
-        message: "What is desired outcome? Will you describe the project?"
+        message: "What is anticipated outcome? Describe the project."
     },
     {
         type: "input",
         name: "license",
-        message: "What type of licensing does the project require?",
+        message: "What type of licensing does the application require?",
         choices: ["MIT", "GNU GPL v3", "ISC"]
     },
     {
         type: "input",
-        name: "dependancies",
+        name: "install",
         message: "What command should be run to install dependancies?"
     },
     {
         type: "input",
-        name: "tests",
+        name: "test",
         message: "What command should be run to administer a test?"
     },
     {
         type: "input",
-        name: "userInfo",
-        message: "What should the user know about using the repo?"
+        name: "contributors",
+        message: "Who has contributed to the repo for this specific project?"
     },
     {
         type: "input",
-        name: "contribute",
-        message: "What does the user need to know about contributing to the repo?"
+        name: "userInfo",
+        message: "What should the user know additionally regarding the application?"
     }
 ];
 
@@ -75,17 +75,15 @@ async function init() {
 init();
 
 /*
-Project name
-License
-Table of Contents:
--description
--installations
--usage
--contributing
--tests
--questions/comments
-
-Link to repo
-Link to deployed app
+Questions & Response names
+1. What is your GitHub account user name? (accountGH)
+2. What is your email address? (email)
+3. What is the name of your application? (projectName)
+4. What is anticipated outcome? Describe the project. (description)
+5. What type of licensing does the application require? (license)
+6. What command should be run to install dependancies (install)
+7. What command should be run to administer a test? (test)
+8. Who has contributed to the repo for this specific project? (contributors)
+9. What should the user know additionally regarding the application? (userInfo)
 */
 
